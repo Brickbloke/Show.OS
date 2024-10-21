@@ -1,141 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Show.OS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Raleway:wght@400&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      font-family: 'Raleway', sans-serif;
-      color: #fff;
-      text-align: center;
-      padding: 50px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show.OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Raleway:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            font-family: 'Raleway', sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
 
-    h1 {
-      font-family: 'Roboto', sans-serif;
-      color: #ff6363;
-      margin: 20px 0;
-      font-size: 3rem;
-      text-shadow: 2px 2px #222;
-    }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #ff6363;
+            margin: 20px 0;
+            font-size: 3rem;
+            text-shadow: 2px 2px #222;
+        }
 
-    h2 {
-      color: #c8d6e5;
-      margin: 10px 0;
-      font-size: 1.5rem;
-    }
+        h2 {
+            color: #c8d6e5;
+            margin: 10px 0;
+            font-size: 1.5rem;
+        }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
 
-    a {
-      color: #ff9f43;
-      text-decoration: none;
-      font-weight: bold;
-      border: 2px solid #ff9f43;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
+        a {
+            color: #ff9f43;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #ff9f43;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
-    a:hover {
-      background-color: #ff9f43;
-      color: #000;
-    }
+        a:hover {
+            background-color: #ff9f43;
+            color: #000;
+        }
 
-    img {
-      width: 200px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
+        img {
+            width: 200px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
 
-    img:hover {
-      transform: scale(1.1);
-    }
+        img:hover {
+            transform: scale(1.1);
+        }
 
-    /* Styling for the dynamic time element */
-    #timeElement {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 1rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 8px 16px;
-      border-radius: 8px;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
+        /* Styling for the dynamic time element */
+        #timeElement {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
 
-    /* Div for top notification */
-    div.notification-bar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.125);
-      color: #fff;
-      justify-content: space-between;
-      padding: 8px 20px; /* Adjusted padding */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+        /* Div for top notification */
+        div.notification-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.125);
+            color: #fff;
+            justify-content: space-between;
+            padding: 8px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    div.notification-bar p {
-      margin: 0;
-      padding: 4px 12px;
-      border-radius: 16px;
-      background-color: rgba(255, 255, 255, 0.125);
-    }
+        div.notification-bar p {
+            margin: 0;
+            padding: 4px 12px;
+            border-radius: 16px;
+            background-color: rgba(255, 255, 255, 0.125);
+        }
 
-    div.notification-bar p:nth-child(2) {
-      background-color: rgba(255, 255, 255, 0.25);
-    }
+        div.notification-bar p:nth-child(2) {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
 
-    /* Center the time in the notification bar */
-    #notificationTime {
-      margin-left: 20px; /* Increased margin for centering */
-    }
-  </style>
+        /* Center the time in the notification bar */
+        #notificationTime {
+            margin-left: 20px;
+        }
+
+        /* Additional styles for the draggable window */
+        .window {
+            border: solid;
+            border-radius: 16px;
+            position: absolute;
+            backdrop-filter: blur(4px);
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none; /* Initially hidden */
+        }
+
+        .windowheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: grab;
+        }
+
+        .closebutton {
+            cursor: pointer;
+            background-color: #EC6B5E;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="welcome">
-    <h1>Welcome to Show.OS</h1>
-    <h2>Introduction</h2>
-    <p>Welcome to Show.OS, where the memes are strong and the code is even stronger. STAY HARD!!!</p>
-    <p>
-      <a href="https://github.com/Brickbloke/" target="_blank">Check out the GitHub</a>
-    </p>
-    <img src="./wiz.jpeg" alt="Wizard image" />
+    <div id="welcome">
+        <h1>Welcome to Show.OS</h1>
+        <h2>Introduction</h2>
+        <p>Welcome to Show.OS, where the memes are strong and the code is even stronger. STAY HARD!!!</p>
+        <p>
+            <a href="https://github.com/Brickbloke/" target="_blank" rel="noopener noreferrer">Check out the GitHub</a>
+        </p>
+        <img src="./wiz.jpeg" alt="Wizard image" />
 
-    <!-- Notification bar -->
-    <div class="notification-bar">
-      <p>ShowOS</p>
-      <p>☀️ Always Up ☁️</p>
-      <p id="notificationTime">Time</p>
+        <!-- Notification bar -->
+        <div class="notification-bar">
+            <p>ShowOS</p>
+            <p>☀️ Always Up ☁️</p>
+            <p id="notificationTime">Time</p>
+        </div>
+
+        <!-- Time display -->
+        <p id="timeElement">Time</p>
     </div>
 
-    <!-- Time display -->
-    <p id="timeElement">Time</p>
-  </div>
+    <script>
+        // Function to update the time in the notification bar and footer dynamically
+        function updateTime() {
+            var currentTime = new Date().toLocaleString();
+            document.querySelector("#timeElement").innerHTML = currentTime;
+            document.querySelector("#notificationTime").innerHTML = currentTime;
+        }
 
-  <script>
-    // Function to update the time in the notification bar and footer dynamically
-    function updateTime() {
-      var currentTime = new Date().toLocaleString();
-      document.querySelector("#timeElement").innerHTML = currentTime;
-      document.querySelector("#notificationTime").innerHTML = currentTime;
-    }
+        // Update the time every second
+        setInterval(updateTime, 1000);
 
-    // Update the time every second
-    setInterval(updateTime, 1000);
-  </script>
+        // Make the welcome window draggable
+        dragElement(document.getElementById("welcome"));
+
+        function dragElement(elmnt) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            const header = elmnt.getElementsByClassName("windowheader")[0];
+            if (header) {
+                header.onmousedown = dragMouseDown;
+            } else {
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
 
 </body>
 
